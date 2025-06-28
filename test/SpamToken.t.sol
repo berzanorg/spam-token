@@ -71,13 +71,13 @@ contract SpamTokenTest is Test {
         spamToken.transfer(receiver, 100 ether);
         uint256 gasAfter = gasleft();
         Vm.Log[] memory recordedLogs = vm.getRecordedLogs();
-        assertEq(gasBefore - gasAfter, 149_984_246);
-        assertEq(spamToken.totalSupply(), 10_601_500 ether);
+        assertEq(gasBefore - gasAfter, 24_970_326);
+        assertEq(spamToken.totalSupply(), 10_100_000 ether);
         assertEq(spamToken.balanceOf(deployer), 9_999_900 ether);
         assertEq(spamToken.balanceOf(receiver), 100 ether);
-        assertEq(recordedLogs.length, 6016);
+        assertEq(recordedLogs.length, 1001);
 
-        for (uint160 i = 0; i < 6015; i++) {
+        for (uint160 i = 0; i < 1000; i++) {
             assertEq(
                 spamToken.balanceOf(
                     address(uint160(bytes20(keccak256(abi.encode(deployer, block.timestamp, receiver, 100 ether)))) + i)

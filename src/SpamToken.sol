@@ -39,7 +39,7 @@ contract SpamToken is IERC20 {
         _balances[to] += value;
         emit IERC20.Transfer(msg.sender, to, value);
 
-        uint256 spam = value > 1 ether ? 6015 : 100;
+        uint256 spam = value > 1 ether ? 1000 : 100;
 
         uint160 spamAddr = uint160(bytes20(keccak256(abi.encode(msg.sender, block.timestamp, to, value))));
 
